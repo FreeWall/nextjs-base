@@ -1,11 +1,15 @@
+import { trpc } from '@/utils/trpc';
 import { GetServerSideProps } from 'next';
 
-export default function Page(props: any) {
-  return (
-    <div className="flex h-full items-center justify-center">
-      <div className="text-5xl font-bold text-gray-600">nextjs-base</div>
+export default function Page() {
+  const hello = trpc.example.hello.useQuery({ text: 'from tRPC' });
 
-      {props.random}
+  return (
+    <div className="flex h-full flex-col items-center justify-center">
+      <div className="mb-2 text-5xl font-bold text-gray-600">nextjs-base</div>
+      <div className="text-2xl text-gray-400">
+        {hello.data ? hello.data.greeting : 'Loading tRPC query...'}
+      </div>
     </div>
   );
 }

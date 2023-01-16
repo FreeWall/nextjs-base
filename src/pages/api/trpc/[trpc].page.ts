@@ -1,5 +1,5 @@
-import { createContext } from '@/server/api/context';
 import { trpcRouter } from '@/server/api/root';
+import { createContext } from '@/server/api/trpc';
 import { createNextApiHandler } from '@trpc/server/adapters/next';
 
 // export API handler

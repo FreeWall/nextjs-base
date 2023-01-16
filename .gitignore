@@ -20,5 +20,7 @@ yarn-error.log*
 .env
 .env*.local
 
-# typescript
+# application
 *.tsbuildinfo
+.mesh
+*.gpl.ts

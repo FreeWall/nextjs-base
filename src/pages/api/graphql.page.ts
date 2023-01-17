@@ -4,7 +4,7 @@ import { getBuiltMesh } from '../../../.mesh';
 
 let serverHandler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 
-const getApolloServerHandler = async () => {
+const getYogaServerHandler = async () => {
   if (!serverHandler) {
     const mesh = await getBuiltMesh();
 
@@ -26,6 +26,5 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const apolloServerHandler = await getApolloServerHandler();
-  return apolloServerHandler(req, res);
+  return (await getYogaServerHandler())(req, res);
 }

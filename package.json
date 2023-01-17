@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
+    "mesh build": "mesh build",
     "build": "next build",
     "start": "next start"
   },

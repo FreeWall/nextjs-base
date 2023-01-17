@@ -14,13 +14,13 @@
     },
     {
       "type": "npm",
-      "script": "mesh build",
+      "script": "codegen",
       "problemMatcher": [],
-      "label": "npm run mesh build",
-      "detail": "Builds artifacts required to use for a gateway server or SDK",
+      "label": "npm run codegen",
+      "detail": "Generates GraphQL artifacts for a gateway server and SDK",
       "icon": {
         "id": "code",
-        "color": "terminal.ansiCyan"
+        "color": "terminal.ansiYellow"
       }
     },
     {

@@ -1,4 +1,6 @@
+import { apolloClient } from '@/utils/apollo';
 import { trpc } from '@/utils/trpc';
+import { ApolloProvider } from '@apollo/client';
 import type { AppType } from 'next/app';
 import Head from 'next/head';
 import '../styles/globals.css';
@@ -13,7 +15,9 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           type="image/svg+xml"
         />
       </Head>
-      <Component {...pageProps} />
+      <ApolloProvider client={apolloClient}>
+        <Component {...pageProps} />
+      </ApolloProvider>
     </>
   );
 };

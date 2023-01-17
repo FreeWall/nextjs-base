@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
-    "mesh build": "mesh build",
-    "build": "next build",
+    "dev": "concurrently -k -r \"graphql-codegen -w\" \"cross-env NODE_OPTIONS='--inspect' next dev\"",
+    "codegen": "mesh build && graphql-codegen",
+    "build": "mesh build && graphql-codegen && next build",
     "start": "next start"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.4",
+    "@graphql-codegen/cli": "^2.16.4",
+    "@graphql-codegen/client-preset": "^1.2.6",
+    "@graphql-codegen/near-operation-file-preset": "^2.5.0",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@graphql-mesh/cli": "^0.82.9",
     "@graphql-mesh/graphql": "^0.33.7",
     "@next/bundle-analyzer": "^12.3.1",
@@ -38,6 +43,7 @@
     "@typescript-eslint/parser": "^5.33.0",
     "autoprefixer": "^10.4.12",
     "babel-plugin-inline-react-svg": "^2.0.1",
+    "concurrently": "^7.6.0",
     "cross-env": "^7.0.3",
     "eslint": "8.22.0",
     "eslint-config-next": "12.3.1",

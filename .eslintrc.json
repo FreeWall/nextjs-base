@@ -13,7 +13,12 @@
         "paths": [
           {
             "name": "lodash",
-            "message": "Please use a specific lodash module, e.g. lodash/random"
+            "message": "Please use a specific lodash module, e.g. 'lodash/random'"
+          },
+          {
+            "name": "@apollo/client",
+            "importNames": ["gql"],
+            "message": "Please use a gql import from '@/utils/apollo'"
           }
         ]
       }

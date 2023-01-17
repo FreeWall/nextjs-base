@@ -1,0 +1,26 @@
+schema:
+  - .mesh/schema.graphql
+generates:
+  .:
+    documents:
+      - src/components/**/*.graphql
+      - src/graphql/**/*.graphql
+    plugins:
+      - typed-document-node
+      - typescript-operations
+    preset: near-operation-file
+    presetConfig:
+      extension: .gql.ts
+      baseTypesPath: .mesh
+      injectables: true
+    config:
+      skipTypename: true
+      namingConvention: 'keep'
+      dedupeOperationSuffix: true
+      arrayInputCoercion: false
+  .gql/:
+    documents:
+      - src/**/*.{tsx,ts}
+    preset: 'client'
+    presetConfig:
+      baseTypesPath: .mesh

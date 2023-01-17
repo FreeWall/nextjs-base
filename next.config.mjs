@@ -1,5 +1,6 @@
 import NextBundleAnalyzer from '@next/bundle-analyzer';
 import { PHASE_DEVELOPMENT_SERVER } from 'next/constants.js';
+import './src/env/server.mjs';
 
 /**
  * @template {import('next').NextConfig} T

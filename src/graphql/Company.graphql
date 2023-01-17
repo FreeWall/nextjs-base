@@ -1,5 +1,6 @@
 query Company {
   company {
     name
+    ceo
   }
 }

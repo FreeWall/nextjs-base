@@ -27,7 +27,10 @@ export default function Page() {
       </div>
       <div className="text-2xl text-gray-400">
         {company.data
-          ? 'GraphQL response: ' + company.data.company?.name
+          ? 'GraphQL ' +
+            company.data.company?.name +
+            ' by ' +
+            company.data.company?.ceo
           : 'Loading GraphQL query...'}
       </div>
       <div className="mt-20 max-w-md text-center text-lg font-medium leading-8 text-gray-600">

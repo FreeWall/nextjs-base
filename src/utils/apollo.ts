@@ -6,8 +6,6 @@ import {
 } from '@apollo/client';
 import { graphql } from '../../.gql';
 
-console.log(process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT);
-
 const link = ApolloLink.from([
   new HttpLink({
     uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,

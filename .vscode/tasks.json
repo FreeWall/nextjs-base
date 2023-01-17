@@ -14,17 +14,6 @@
     },
     {
       "type": "npm",
-      "script": "codegen",
-      "problemMatcher": [],
-      "label": "npm run codegen",
-      "detail": "Generates GraphQL artifacts for a gateway server and SDK",
-      "icon": {
-        "id": "code",
-        "color": "terminal.ansiYellow"
-      }
-    },
-    {
-      "type": "npm",
       "script": "build",
       "problemMatcher": [],
       "label": "npm run build",

@@ -1,12 +1,13 @@
 {
-  "name": "ecommerce",
+  "name": "nextjs-base",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "mesh build && concurrently -k -r \"graphql-codegen -w\" \"cross-env NODE_OPTIONS='--inspect' next dev\"",
     "codegen": "mesh build && graphql-codegen",
     "build": "npm run codegen && next build",
-    "start": "next start"
+    "start": "next start",
+    "build & start": "npm run build && npm run start"
   },
   "dependencies": {
     "@apollo/client": "^3.7.4",
@@ -14,8 +15,9 @@
     "@graphql-codegen/client-preset": "^1.2.6",
     "@graphql-codegen/near-operation-file-preset": "^2.5.0",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
-    "@graphql-mesh/cli": "^0.82.9",
-    "@graphql-mesh/graphql": "^0.33.7",
+    "@graphql-mesh/cli": "^0.82.11",
+    "@graphql-mesh/graphql": "^0.33.8",
+    "@graphql-mesh/runtime": "^0.46.5",
     "@next/bundle-analyzer": "^12.3.1",
     "@tanstack/react-query": "^4.16.1",
     "@trpc/client": "^10.0.0-rc.1",

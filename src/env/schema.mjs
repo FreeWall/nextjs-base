@@ -7,6 +7,7 @@ import { z } from 'zod';
  */
 export const serverSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']),
+  GRAPHQL_ENDPOINT: z.string(),
 });
 
 /**
@@ -16,6 +17,7 @@ export const serverSchema = z.object({
  */
 export const serverEnv = {
   NODE_ENV: process.env.NODE_ENV,
+  GRAPHQL_ENDPOINT: process.env.GRAPHQL_ENDPOINT,
 };
 
 /**
@@ -25,7 +27,7 @@ export const serverEnv = {
  */
 export const clientSchema = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string(),
-  NEXT_PUBLIC_GRAPHQL_ENDPOINT: z.string(),
+  NEXT_PUBLIC_GRAPHQL_LOCAL_ENDPOINT: z.string(),
 });
 
 /**
@@ -35,5 +37,6 @@ export const clientSchema = z.object({
  * @type {{ [k in keyof z.infer<typeof clientSchema>]: z.infer<typeof clientSchema>[k] | undefined }}
  */
 export const clientEnv = {
-  NEXT_PUBLIC_GRAPHQL_ENDPOINT: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
+  NEXT_PUBLIC_GRAPHQL_LOCAL_ENDPOINT:
+    process.env.NEXT_PUBLIC_GRAPHQL_LOCAL_ENDPOINT,
 };

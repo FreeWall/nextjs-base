@@ -5,7 +5,7 @@
       "type": "npm",
       "script": "dev",
       "problemMatcher": [],
-      "label": "npm run dev",
+      "label": "dev",
       "detail": "Start the application in development mode",
       "icon": {
         "id": "debug-console",
@@ -16,7 +16,7 @@
       "type": "npm",
       "script": "build",
       "problemMatcher": [],
-      "label": "npm run build",
+      "label": "build",
       "detail": "Build the application for production usage",
       "icon": {
         "id": "gear",
@@ -27,11 +27,22 @@
       "type": "npm",
       "script": "start",
       "problemMatcher": [],
-      "label": "npm run start",
+      "label": "start",
       "detail": "Start the application for production usage",
       "icon": {
         "id": "play",
         "color": "terminal.ansiGreen"
+      }
+    },
+    {
+      "type": "npm",
+      "script": "build & start",
+      "problemMatcher": [],
+      "label": "build & start",
+      "detail": "Build and start the application for production usage",
+      "icon": {
+        "id": "run-all",
+        "color": "terminal.ansiMagenta"
       }
     }
   ]

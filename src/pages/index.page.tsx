@@ -1,7 +1,9 @@
-import { CompanyDocument } from '@/graphql/Company.gql';
+import { CountriesDocument } from '@/graphql/Countries.gql';
 import { apolloClient, gql } from '@/utils/apollo';
 import { trpc } from '@/utils/trpc';
 import { useQuery } from '@apollo/client';
+import shuffle from 'lodash/shuffle';
+import slice from 'lodash/slice';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 
@@ -17,23 +19,47 @@ const techs = [
 
 export default function Page() {
   const hello = trpc.example.hello.useQuery({ text: 'from tRPC' });
-  const company = useQuery(CompanyDocument);
+  const countries = useQuery(CountriesDocument);
 
   return (
     <div className="flex h-full flex-col items-center justify-center">
-      <div className="mb-10 text-5xl font-bold text-gray-600">nextjs-base</div>
-      <div className="text-2xl text-gray-400">
-        {hello.data ? hello.data.greeting : 'Loading tRPC query...'}
+      <div className="mb-12 text-5xl font-bold text-gray-600">nextjs-base</div>
+      <div className="mb-4 w-72 bg-slate-100 p-2 py-[6px]">
+        <div className="text-sm text-gray-400">tRPC:</div>
+        <div className="font-medium text-gray-600">
+          {hello.data ? hello.data.greeting : 'Loading tRPC query...'}
+        </div>
       </div>
-      <div className="text-2xl text-gray-400">
-        {company.data
-          ? 'GraphQL ' +
-            company.data.company?.name +
-            ' by ' +
-            company.data.company?.ceo
-          : 'Loading GraphQL query...'}
+      <div className="w-72 bg-slate-100 p-2 py-[6px]">
+        <div className="text-sm text-gray-400">GraphQL:</div>
+        <div className="font-medium text-gray-600">
+          {countries.data ? (
+            <>
+              <span>EU countries: </span>
+              {slice(
+                shuffle(
+                  countries.data?.countries.map((country) => country.code),
+                ),
+                0,
+                5,
+              ).map((code) => (
+                <span key={code}>
+                  <Link
+                    href={'country/' + code}
+                    key={code}
+                  >
+                    {code}
+                  </Link>
+                  ,&nbsp;
+                </span>
+              ))}
+            </>
+          ) : (
+            'Loading GraphQL query...'
+          )}
+        </div>
       </div>
-      <div className="mt-20 max-w-md text-center text-lg font-medium leading-8 text-gray-600">
+      <div className="mt-12 max-w-md text-center text-lg font-medium leading-8 text-gray-600">
         {techs.map((tech, key) => (
           <div
             key={key}
@@ -57,15 +83,15 @@ export default function Page() {
 export const getServerSideProps: GetServerSideProps = async () => {
   const query = apolloClient.query({
     query: gql(`
-      query CompanyServer {
-        company {
+      query CountryServer {
+        country(code: "CZ") {
           name
         }
       }
     `),
   });
 
-  console.log('GraphQL server response: ' + (await query).data.company?.name);
+  console.log('GraphQL server response: ' + (await query).data.country?.name);
 
   return {
     props: {},

@@ -1,5 +1,5 @@
 sources:
-  - name: spacex
+  - name: countries
     handler:
       graphql:
-        endpoint: https://api.spacex.land/graphql
+        endpoint: ${GRAPHQL_ENDPOINT}

@@ -6,7 +6,7 @@ export default router({
     .input(z.object({ text: z.string() }))
     .query(({ input }) => {
       return {
-        greeting: 'Hello ' + input.text,
+        greeting: 'Hello ' + input.text + ': ' + new Date().getTime(),
       };
     }),
 });

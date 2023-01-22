@@ -19,6 +19,13 @@ export const trpc = createTRPCNext<TrpcRouter>({
         httpBatchLink({ url }),
       ],
       url,
+      queryClientConfig: {
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+          },
+        },
+      },
       transformer: superjson,
     };
   },

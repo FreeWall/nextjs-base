@@ -24,14 +24,14 @@ export default function Page() {
   return (
     <div className="flex h-full flex-col items-center justify-center">
       <div className="mb-12 text-5xl font-bold text-gray-600">nextjs-base</div>
-      <div className="mb-4 w-72 bg-slate-100 p-2 py-[6px]">
-        <div className="text-sm text-gray-400">tRPC:</div>
+      <div className="mb-4 w-72 rounded bg-slate-100 p-2 py-[6px]">
+        <div className="text-sm text-gray-500">tRPC request:</div>
         <div className="font-medium text-gray-600">
           {hello.data ? hello.data.greeting : 'Loading tRPC query...'}
         </div>
       </div>
-      <div className="w-72 bg-slate-100 p-2 py-[6px]">
-        <div className="text-sm text-gray-400">GraphQL:</div>
+      <div className="w-72 rounded bg-slate-100 p-2 py-[6px]">
+        <div className="text-sm text-gray-500">GraphQL request:</div>
         <div className="font-medium text-gray-600">
           {countries.data ? (
             <>
@@ -47,6 +47,7 @@ export default function Page() {
                   <Link
                     href={'country/' + code}
                     key={code}
+                    prefetch={false}
                   >
                     {code}
                   </Link>

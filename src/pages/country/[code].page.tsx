@@ -1,6 +1,7 @@
 import { CountryServer2Query } from '.gql/graphql';
 import { apolloClient, gql } from '@/utils/apollo';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from 'next';
+import Image from 'next/image';
 
 interface Props {
   country: CountryServer2Query['country'];
@@ -10,7 +11,18 @@ export default function Page(props: Props) {
   return (
     <div className="flex h-full flex-col items-center justify-center">
       <div className="mb-10 text-5xl font-bold text-gray-600">
-        {props.country?.name}
+        <Image
+          src={
+            'https://flagcdn.com/w40/' +
+            props.country?.code.toLowerCase() +
+            '.png'
+          }
+          alt={props.country?.code}
+          width={40}
+          height={27}
+          quality={90}
+        />
+        <span className="ml-4">{props.country?.name}</span>
       </div>
       <div className="max-w-md text-center text-lg font-medium leading-8 text-gray-600">
         Code: {props.country?.code}

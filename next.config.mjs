@@ -23,6 +23,11 @@ export default function next(stage) {
       reactStrictMode: true,
       swcMinify: true,
       pageExtensions: ['page.tsx', 'page.ts'],
+      images: {
+        domains: (process.env.IMAGE_DOMAINS ?? '')
+          .split(',')
+          .map((s) => s.trim()),
+      },
       webpack(config) {
         config.module.rules.push({
           test: /\.svg$/,

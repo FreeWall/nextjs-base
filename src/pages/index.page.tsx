@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 import shuffle from 'lodash/shuffle';
 import slice from 'lodash/slice';
 import { GetServerSideProps } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const techs = [
@@ -49,9 +50,21 @@ export default function Page() {
                     key={code}
                     prefetch={false}
                   >
-                    {code}
+                    <a className="mr-2">
+                      <Image
+                        src={
+                          'https://flagcdn.com/w20/' +
+                          code.toLowerCase() +
+                          '.png'
+                        }
+                        alt={code}
+                        width={20}
+                        height={13}
+                        quality={90}
+                        className="inline"
+                      />
+                    </a>
                   </Link>
-                  ,&nbsp;
                 </span>
               ))}
             </>

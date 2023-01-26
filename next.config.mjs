@@ -28,6 +28,10 @@ export default function next(stage) {
           .split(',')
           .map((s) => s.trim()),
       },
+      i18n: {
+        locales: ['en', 'cs'],
+        defaultLocale: 'en',
+      },
       webpack(config) {
         config.module.rules.push({
           test: /\.svg$/,

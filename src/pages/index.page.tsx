@@ -12,6 +12,7 @@ import { FormattedMessage } from 'react-intl';
 const techs = [
   { name: 'Next.js', link: 'https://nextjs.org/' },
   { name: 'TypeScript', link: 'https://www.typescriptlang.org/' },
+  { name: 'React Intl', link: 'https://formatjs.io/docs/react-intl/' },
   { name: 'tRPC', link: 'https://trpc.io/' },
   { name: 'GraphQL', link: 'https://graphql.org/' },
   { name: 'GraphQL Mesh', link: 'https://the-guild.dev/graphql/mesh' },
@@ -83,7 +84,7 @@ export default function Page() {
           />
         </div>
       </div>
-      <div className="mt-12 max-w-md text-center text-lg font-medium leading-8 text-gray-600">
+      <div className="mt-12 w-[500px] text-center text-lg font-medium leading-8 text-gray-600">
         {techs.map((tech, key) => (
           <div
             key={key}

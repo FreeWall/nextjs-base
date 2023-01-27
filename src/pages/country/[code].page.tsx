@@ -90,6 +90,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: codes,
-    fallback: false,
+    fallback: 'blocking',
   };
 };

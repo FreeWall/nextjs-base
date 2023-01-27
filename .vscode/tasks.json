@@ -44,6 +44,17 @@
         "id": "run-all",
         "color": "terminal.ansiMagenta"
       }
+    },
+    {
+      "type": "npm",
+      "script": "install",
+      "problemMatcher": [],
+      "label": "install",
+      "detail": "Install the dependencies",
+      "icon": {
+        "id": "package",
+        "color": "terminal.ansiWhite"
+      }
     }
   ]
 }

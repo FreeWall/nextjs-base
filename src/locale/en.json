@@ -1,3 +1,6 @@
 {
-  "translation.myname": "My name is {name}"
+  "translation.myname": "My name is {name}",
+  "country.code": "Code",
+  "country.currency": "Currency",
+  "country.capital": "Capital"
 }

@@ -1,3 +1,6 @@
 {
-  "translation.myname": "Jmenuji se {name}"
+  "translation.myname": "Jmenuji se {name}",
+  "country.code": "Kód",
+  "country.currency": "Měna",
+  "country.capital": "Hlavní město"
 }

@@ -2,6 +2,7 @@ import { CountryServer2Query } from '.gql/graphql';
 import { apolloClient, gql } from '@/utils/apollo';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from 'next';
 import Image from 'next/image';
+import { FormattedMessage } from 'react-intl';
 
 interface Props {
   country: CountryServer2Query['country'];
@@ -25,11 +26,11 @@ export default function Page(props: Props) {
         <span className="ml-4">{props.country?.name}</span>
       </div>
       <div className="max-w-md text-center text-lg font-medium leading-8 text-gray-600">
-        Code: {props.country?.code}
+        <FormattedMessage id="country.code" />: {props.country?.code}
         <br />
-        Currency: {props.country?.currency}
+        <FormattedMessage id="country.currency" />: {props.country?.currency}
         <br />
-        Capital: {props.country?.capital}
+        <FormattedMessage id="country.capital" />: {props.country?.capital}
         <br />
       </div>
     </div>
@@ -68,7 +69,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const query = apolloClient.query({
     query: gql(`
       query CountriesServer2 {
@@ -84,12 +85,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
 
   const codes: GetStaticPathsResult['paths'] = [];
-  (await query).data.countries.map((country) => {
-    codes.push({ params: { code: country.code } });
-  });
+
+  for (const locale of locales as string[]) {
+    (await query).data.countries.map((country) => {
+      codes.push({ params: { code: country.code }, locale: locale });
+    });
+  }
 
   return {
     paths: codes,
-    fallback: 'blocking',
+    fallback: false,
   };
 };

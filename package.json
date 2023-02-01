@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.4",
+    "@babel/plugin-syntax-jsx": "^7.18.6",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
     "@graphql-codegen/cli": "^2.16.4",
     "@graphql-codegen/client-preset": "^1.2.6",
     "@graphql-codegen/near-operation-file-preset": "^2.5.0",
@@ -18,6 +21,7 @@
     "@graphql-mesh/cli": "^0.82.12",
     "@graphql-mesh/graphql": "^0.33.9",
     "@graphql-mesh/runtime": "^0.46.5",
+    "@magento/pagebuilder": "^8.0.0",
     "@next/bundle-analyzer": "^12.3.1",
     "@tanstack/react-query": "^4.16.1",
     "@trpc/client": "^10.0.0-rc.1",
@@ -39,6 +43,7 @@
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
     "@types/lodash": "^4.14.191",
+    "@types/magento2-page-builder-types": "github:magento/page-builder-types",
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",

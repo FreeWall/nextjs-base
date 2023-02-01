@@ -1,0 +1,7 @@
+query HomePage {
+  cmsPage(id: 2) {
+    identifier
+    content_heading
+    content
+  }
+}

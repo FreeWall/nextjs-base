@@ -3,3 +3,7 @@ sources:
     handler:
       graphql:
         endpoint: ${GRAPHQL_ENDPOINT}
+  - name: m2
+    handler:
+      graphql:
+        endpoint: ${GRAPHQL_M2_ENDPOINT}

@@ -18,9 +18,9 @@ generates:
       namingConvention: 'keep'
       dedupeOperationSuffix: true
       arrayInputCoercion: false
-  .gql/:
-    documents:
-      - src/**/*.{tsx,ts}
-    preset: 'client'
-    presetConfig:
-      baseTypesPath: .mesh
+ # .gql/:
+ #   documents:
+ #     - src/**/*.{tsx,ts}
+ #   preset: 'client'
+ #   presetConfig:
+ #     baseTypesPath: .mesh

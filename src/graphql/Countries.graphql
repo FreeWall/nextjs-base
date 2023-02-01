@@ -1,5 +1,0 @@
-query Countries {
-  countries(filter: { continent: { eq: "EU" } }) {
-    code
-  }
-}

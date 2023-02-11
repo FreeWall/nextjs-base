@@ -1,21 +1,30 @@
-import { createYoga } from 'graphql-yoga';
+import { getBuiltMesh } from '.mesh';
+import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
+import { loadSchema } from '@graphql-tools/load';
+import { createSchema, createYoga } from 'graphql-yoga';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getBuiltMesh } from '../../../.mesh';
-
 let serverHandler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 
 const getYogaServerHandler = async () => {
   if (!serverHandler) {
+    //const typeDefs = readFileSync('./.gql/schema.graphql', 'utf8');
+    const typeDefs = await loadSchema('./.gql/schema.graphql', {
+      loaders: [new GraphQLFileLoader()],
+    });
+
+    const schema = createSchema({ typeDefs }) as any;
+
     const mesh = await getBuiltMesh();
 
+    console.dir(mesh.schema);
+
     serverHandler = createYoga({
-      plugins: [...mesh.plugins],
+      //plugins: [...mesh.plugins],
       graphqlEndpoint: '/api/graphql',
-      schema: mesh.schema,
+      schema: schema,
       maskedErrors: false,
       parserCache: false,
       validationCache: false,
-      logging: mesh.logger,
     });
   }
 

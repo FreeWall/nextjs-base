@@ -9,10 +9,16 @@ import { graphql } from '../../.gql';
 let link = null;
 
 if (typeof window === 'undefined') {
-  const mesh = await import('.mesh').then(({ getBuiltMesh }) => getBuiltMesh());
+  /*const mesh = await import('.mesh').then(({ getBuiltMesh }) => getBuiltMesh());
   const MeshApolloLink = (await import('./apollo/meshLink')).MeshApolloLink;
 
-  link = ApolloLink.from([new MeshApolloLink(mesh)]);
+  link = ApolloLink.from([new MeshApolloLink(mesh)]);*/
+
+  link = ApolloLink.from([
+    new HttpLink({
+      uri: process.env.GRAPHQL_ENDPOINT,
+    }),
+  ]);
 } else {
   link = ApolloLink.from([
     new HttpLink({

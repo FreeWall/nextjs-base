@@ -1,6 +1,11 @@
 schema:
-  - .mesh/schema.graphql
+  - https://countries.trevorblades.com/
 generates:
+  .gql/types.ts:
+    plugins:
+      - typescript
+      - typed-document-node
+      - typescript-operations
   .:
     documents:
       - src/components/**/*.graphql
@@ -11,7 +16,7 @@ generates:
     preset: near-operation-file
     presetConfig:
       extension: .gql.ts
-      baseTypesPath: .mesh
+      baseTypesPath: .gql/types.ts
       injectables: true
     config:
       skipTypename: true
@@ -23,4 +28,7 @@ generates:
       - src/**/*.{tsx,ts}
     preset: 'client'
     presetConfig:
-      baseTypesPath: .mesh
+      baseTypesPath: .gql/types.ts
+  .gql/schema.graphql:
+    plugins:
+      - schema-ast

@@ -1,1 +1,1 @@
-schema: '.mesh/schema.graphql'
+schema: '.gql/schema.graphql'
